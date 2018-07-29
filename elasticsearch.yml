@@ -1,0 +1,7 @@
+# Elastic search compose
+elasticsearch:
+  image: docker.io/elasticsearch:1.7.3
+  command: -Des.path.logs=/logs/elasticsearch/
+  ports:
+    - "9200:9200"
+    - "9300:9300"

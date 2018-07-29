@@ -1,0 +1,7 @@
+# MySQL compose
+mysql:
+  image: mysql:latest
+  environment:
+   - MYSQL_ALLOW_EMPTY_PASSWORD=true
+  ports:
+   - "3306:3306"

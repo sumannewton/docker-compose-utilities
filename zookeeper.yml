@@ -1,0 +1,4 @@
+zookeeper: 
+  image: garland/zookeeper
+  ports: 
+    - "2181:2181"
