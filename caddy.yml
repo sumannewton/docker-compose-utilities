@@ -1,0 +1,7 @@
+  # Proxy service to route requests to the appropriate backend services
+  caddy:
+    image: caddy:latest
+    ports:
+      - "8100:8100"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
