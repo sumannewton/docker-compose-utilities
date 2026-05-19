@@ -1,0 +1,21 @@
+  # Optional dnsmasq service for local DNS resolution of container hostnames
+  dnsmasq:
+    image: dockurr/dnsmasq:latest
+    container_name: dnsmasq
+    restart: always
+    # Permissions required by dnsmasq to bind raw sockets and manage networks
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    environment:
+      # Upstream primary/secondary DNS servers for regular web browsing
+      - DNS1=1.1.1.1
+      - DNS2=8.8.8.8
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      # Mount your Mac/Linux /etc/hosts file directly inside the container
+      - /etc/hosts:/etc/dnsmasq.hosts:ro
+    # Force dnsmasq to explicitly read our mounted hosts file addition
+    command: [ "dnsmasq", "-k", "--addn-hosts=/etc/dnsmasq.hosts", "--log-queries=extra" ]
