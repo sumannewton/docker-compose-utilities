@@ -1,0 +1,10 @@
+ngrok:
+  image: ngrok/ngrok:latest
+  restart: always
+  environment:
+    - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+  command:
+    - "http"
+    - "app:80"
+  ports:
+    - "4040:4040" # Access ngrok web UI locally
